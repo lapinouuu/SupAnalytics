@@ -1,0 +1,517 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/manager.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.manager_home.title']}" />
+    </ui:define>
+    
+    <ui:define name="content">
+        <h2 style="color:#000066">Bienvenue sur la page d'analyse des chiffres de l'entreprise.</h2>
+        <p><b><u>Choisissez ci-dessous les filtres que vous voulez :</u></b></p>
+        <div style="margin-left:300px;float:left;">
+            <input type="button" id="tout" name="tout" value="Tout afficher"/>
+        </div>
+        <div style="margin-left:20px;float:left;">
+            <input type="checkbox" id="paris" name="paris" /> Paris
+        </div>
+        <div style="margin-left:20px;float:left;">
+            <input type="checkbox" id="montreal" name="montreal" /> Montréal
+        </div>
+        <div style="margin-left:20px;float:left;">
+            <input type="checkbox" id="tokyo" name="tokyo" /> Tokyo
+        </div>
+        <div style="margin-left:20px;float:left;">
+            <input type="radio" id="gender1" name="gender" value="homme" /> Homme
+            <input type="radio" id="gender2" name="gender" value="femme" /> Femme
+        </div>
+        <div style="margin-left:20px;float:left;">
+            <input type="radio" id="20001" name="income" value="m2000" /> - 3000€
+            <input type="radio" id="20002" name="income" value="p2000" /> + 3000€
+        </div>
+        
+        <p style="margin-top:50px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les utilisateurs
+        </p>
+        <h:dataTable value="#{userController.usersModel}" var="emp" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${emp.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${emp.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${emp.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${emp.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${emp.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${emp.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${emp.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les hommes
+        </p>
+        <h:dataTable value="#{userController.hommesModel}"  id="homme_div" var="hom" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${hom.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${hom.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${hom.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${hom.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${hom.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${hom.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${hom.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de toutes les femmes
+        </p>
+        <h:dataTable value="#{userController.femmesModel}"  id="femme_div" var="fem" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${fem.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${fem.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${fem.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${fem.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${fem.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${fem.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${fem.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les riches (+ 3000 €)
+        </p>
+        <h:dataTable value="#{userController.richesModel}"  id="riche_div" var="ric" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${ric.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${ric.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${ric.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${ric.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${ric.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${ric.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${ric.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les pauvres (- 3000 €)
+        </p>
+        <h:dataTable value="#{userController.pauvresModel}"  id="pauvre_div" var="pau" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${pau.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${pau.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${pau.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${pau.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${pau.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${pau.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${pau.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les Parisiens
+        </p>
+        <h:dataTable value="#{userController.parisModel}"  id="paris_div" var="par" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${par.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${par.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${par.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${par.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${par.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${pau.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${par.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les Montrealais
+        </p>
+        <h:dataTable value="#{userController.montrealModel}"  id="montreal_div" var="mon" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${mon.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${mon.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${mon.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${mon.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${mon.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${mon.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${mon.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les Bridés (Tokyo)
+        </p>
+        <h:dataTable value="#{userController.tokyoModel}"  id="tokyo_div" var="tok" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${tok.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${tok.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${tok.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${tok.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${tok.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${tok.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${tok.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les mariés
+        </p>
+        <h:dataTable value="#{userController.mariesModel}"  id="marie_div" var="mar" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${mar.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${mar.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${mar.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${mar.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${mar.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${mar.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${mar.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+        <p style="margin-top:20px;background-color:orange;font-size:20px;border-radius:5px;padding:5px;">
+            Liste de tous les pas mariés
+        </p>
+        <h:dataTable value="#{userController.pasMariesModel}"  id="pmarie_div" var="pmar" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom" />
+                </f:facet>
+                ${pmar.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email" />
+                </f:facet>
+                ${pmar.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ville" />
+                </f:facet>
+                ${pmar.ville}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sexe" />
+                </f:facet>
+                ${pmar.gender}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Salaire" />
+                </f:facet>
+                ${pmar.income} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Statut marital" />
+                </f:facet>
+                ${pmar.marital}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de vente(s)" />
+                </f:facet>
+                ${pmar.nb_ventes}
+            </h:column>
+        </h:dataTable>
+        
+    </ui:define>
+
+</ui:composition>

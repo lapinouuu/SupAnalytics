@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>SupAnalytics - <ui:insert name="title" /></title>
+        <meta name="author" content="@bargenson" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/style.css"/>
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/jquery.js"/>
+    </h:head>
+
+    <h:body>
+        <script>
+            $(document).ready(function(){
+                $("#tout").click(function(){
+                        $("#paris").attr("checked",false);
+                        $("#montreal").attr("checked",false);
+                        $("#tokyo").attr("checked",false);
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#paris_div").fadeIn();
+                        $("#montreal_div").fadeIn();
+                        $("#tokyo_div").fadeIn();
+                        $("#homme_div").fadeIn();
+                        $("#femme_div").fadeIn();
+                        $("#pauvre_div").fadeIn();
+                        $("#riche_div").fadeIn();
+                        $("#best_div").fadeIn();
+                        $("#plus_div").fadeIn();
+                        $("#moins_div").fadeIn();
+                        $("#nb_total_div").fadeIn();
+                        $("#total_div").fadeIn();
+                        $("#direct_div").fadeIn();
+                        $("#internet_div").fadeIn();
+                });
+                
+                $("#paris").click(function(){
+                    if($("#paris").attr("checked") == false){
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#paris_div").fadeIn();
+                        $("#montreal_div").fadeIn();
+                        $("#tokyo_div").fadeIn();
+                        $("#homme_div").fadeIn();
+                        $("#femme_div").fadeIn();
+                        $("#pauvre_div").fadeIn();
+                        $("#riche_div").fadeIn();
+                        $("#best_div").fadeIn();
+                        $("#plus_div").fadeIn();
+                        $("#moins_div").fadeIn();
+                        $("#nb_total_div").fadeIn();
+                        $("#total_div").fadeIn();
+                        $("#direct_div").fadeIn();
+                        $("#internet_div").fadeIn();
+                    }
+                    else{
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#montreal_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                    }
+                });
+                
+                $("#montreal").click(function(){
+                    if($("#montreal").attr("checked") == false){
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#montreal_div").fadeIn();
+                        $("#paris_div").fadeIn();
+                        $("#tokyo_div").fadeIn();
+                        $("#homme_div").fadeIn();
+                        $("#femme_div").fadeIn();
+                        $("#pauvre_div").fadeIn();
+                        $("#riche_div").fadeIn();
+                        $("#best_div").fadeIn();
+                        $("#plus_div").fadeIn();
+                        $("#moins_div").fadeIn();
+                        $("#nb_total_div").fadeIn();
+                        $("#total_div").fadeIn();
+                        $("#direct_div").fadeIn();
+                        $("#internet_div").fadeIn();
+                    }
+                    else{
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#paris_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                    }
+                });
+                
+                $("#tokyo").click(function(){
+                    if($("#tokyo").attr("checked") == false){
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#paris_div").fadeIn();
+                        $("#montreal_div").fadeIn();
+                        $("#tokyo_div").fadeIn();
+                        $("#homme_div").fadeIn();
+                        $("#femme_div").fadeIn();
+                        $("#pauvre_div").fadeIn();
+                        $("#riche_div").fadeIn();
+                        $("#best_div").fadeIn();
+                        $("#plus_div").fadeIn();
+                        $("#moins_div").fadeIn();
+                        $("#nb_total_div").fadeIn();
+                        $("#total_div").fadeIn();
+                        $("#direct_div").fadeIn();
+                        $("#internet_div").fadeIn();
+                    }
+                    else{
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#montreal_div").fadeOut();
+                        $("#paris_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                    }
+                });
+                
+                $("#gender1").click(function(){
+                    //alert($("input[type=radio][name=gender]:checked").attr("value"));
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#homme_div").fadeIn();
+                        $("#montreal_div").fadeOut();
+                        $("#paris_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                });
+                $("#gender2").click(function(){
+                    //alert($("input[type=radio][name=gender]:checked").attr("value"));
+                        $("#20001").attr("checked",false);
+                        $("#20002").attr("checked",false);
+                        $("#femme_div").fadeIn();
+                        $("#montreal_div").fadeOut();
+                        $("#paris_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                });
+                
+                $("#20001").click(function(){
+                        $("#gender1").attr("checked",false);
+                        $("#gender2").attr("checked",false);
+                        $("#montreal_div").fadeOut();
+                        $("#paris_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#riche_div").fadeOut();
+                        $("#pauvre_div").fadeIn();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                });
+                $("#20002").click(function(){
+                        $("#montreal_div").fadeOut();
+                        $("#paris_div").fadeOut();
+                        $("#homme_div").fadeOut();
+                        $("#femme_div").fadeOut();
+                        $("#tokyo_div").fadeOut();
+                        $("#pauvre_div").fadeOut();
+                        $("#riche_div").fadeIn();
+                        $("#best_div").fadeOut();
+                        $("#plus_div").fadeOut();
+                        $("#moins_div").fadeOut();
+                        $("#nb_total_div").fadeOut();
+                        $("#total_div").fadeOut();
+                        $("#direct_div").fadeOut();
+                        $("#internet_div").fadeOut();
+                });
+            });
+</script>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <h:outputLink styleClass="brand" value="#">
+                        <h:outputText value="SupAnalytics" />
+                    </h:outputLink>
+                    <div class="nav-collapse">
+                        <ui:insert name="menu" />
+                        <h:form style="display: inline;">
+                            <ul class="nav pull-right">
+                                <li>
+                                    <h:outputLink value="login.xhtml"
+                                                  rendered="#{not userController.authenticated}">
+                                        <h:outputText value="#{msg['templates.main.menu.login']}" />
+                                    </h:outputLink>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{userController.logout}"
+                                                   rendered="#{userController.authenticated}"
+                                                   value="#{userController.user.firstName} #{userController.user.lastName} (#{msg['templates.main.menu.logout']})" />
+                                </li>
+                            </ul>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section style="margin-top: 80px;">
+            <ui:insert name="content" />
+        </section>
+
+        <footer style="text-align: center;">
+            <em>Powered by Clem !</em>
+        </footer>
+
+    </h:body>
+
+</html>

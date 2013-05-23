@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rmt" default="all">
+  
+    <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <pathelement location="${basedir}/lib/javax.annotation.jar"/>
+    <pathelement location="${basedir}/lib/javax.ejb.jar"/>
+    <pathelement location="${basedir}/lib/javax.jms.jar"/>
+    <pathelement location="${basedir}/lib/javax.persistence.jar"/>
+    <pathelement location="${basedir}/lib/javax.resource.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet.jsp.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet.jsp.jstl.jar"/>
+    <pathelement location="${basedir}/lib/javax.transaction.jar"/>
+    <pathelement location="${basedir}/lib/jsf-api.jar"/>
+    <pathelement location="${basedir}/lib/jsf-impl.jar"/>
+    <pathelement location="${basedir}/lib/jstl-1.1.0.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module Rmt -->
+  
+  <dirname property="module.rmt.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.rmt" value="${compiler.args}"/>
+  
+  <property name="rmt.output.dir" value="${module.rmt.basedir}/out/production/Rmt"/>
+  <property name="rmt.testoutput.dir" value="${module.rmt.basedir}/out/test/Rmt"/>
+  
+  <path id="rmt.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="rmt.module.production.classpath">
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="rmt.runtime.production.module.classpath">
+    <pathelement location="${rmt.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="rmt.module.classpath">
+    <pathelement location="${rmt.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="rmt.runtime.module.classpath">
+    <pathelement location="${rmt.testoutput.dir}"/>
+    <pathelement location="${rmt.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.rmt">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.rmt">
+    <patternset refid="excluded.from.module.rmt"/>
+  </patternset>
+  
+  <path id="rmt.module.sourcepath">
+    <dirset dir="${module.rmt.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.rmt" depends="compile.module.rmt.production,compile.module.rmt.tests" description="Compile module Rmt"/>
+  
+  <target name="compile.module.rmt.production" description="Compile module Rmt; production classes">
+    <mkdir dir="${rmt.output.dir}"/>
+    <javac destdir="${rmt.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.rmt}"/>
+      <bootclasspath refid="rmt.module.bootclasspath"/>
+      <classpath refid="rmt.module.production.classpath"/>
+      <src refid="rmt.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.rmt"/>
+    </javac>
+    
+    <copy todir="${rmt.output.dir}">
+      <fileset dir="${module.rmt.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.rmt.tests" depends="compile.module.rmt.production" description="compile module Rmt; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.rmt" description="cleanup module">
+    <delete dir="${rmt.output.dir}"/>
+    <delete dir="${rmt.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.rmt, clean.artifact.rmt:war_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.rmt" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.rmt:war_exploded" value="${basedir}/out/artifacts/Rmt_war_exploded.war"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="clean.artifact.rmt:war_exploded" description="clean Rmt:war exploded artifact output">
+    <delete dir="${artifact.output.rmt:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.rmt:war_exploded" depends="init.artifacts, compile.module.rmt" description="Build &#39;Rmt:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.rmt:war_exploded}"/>
+    <mkdir dir="${artifact.output.rmt:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.rmt:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.rmt:war_exploded}/WEB-INF/classes">
+      <fileset dir="${rmt.output.dir}"/>
+    </copy>
+    <copy todir="${artifact.output.rmt:war_exploded}">
+      <fileset dir="${basedir}/web"/>
+    </copy>
+    <mkdir dir="${artifact.output.rmt:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/web/WEB-INF/web.xml" tofile="${artifact.output.rmt:war_exploded}/WEB-INF/web.xml"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.rmt:war_exploded" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
